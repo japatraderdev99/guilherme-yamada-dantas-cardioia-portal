@@ -100,7 +100,7 @@ A margem preta esquerda foi removida; o pequeno corte inferior da captura origin
 
 **Alternativa anterior:** [CardioIA-Portal-demonstracao.mp4](document/video/CardioIA-Portal-demonstracao.mp4), 3min05s, composição de capturas reais com explicações e trechos do código.
 
-**Pendente de publicação pelo aluno:** revisar o vídeo, publicar no YouTube como **não listado** e inserir o link real nesta seção. O roteiro está em [ROTEIRO-VIDEO.md](ROTEIRO-VIDEO.md). Este repositório deve ser público no GitHub com o nome indicado acima. Não existe link de publicação confirmado nesta versão local.
+**Pendente de publicação pelo aluno:** revisar o vídeo, publicar no YouTube como **não listado** e inserir o link real nesta seção. O roteiro está em [ROTEIRO-VIDEO.md](ROTEIRO-VIDEO.md). O código está publicado no repositório público indicado acima. Falta o link real do YouTube.
 
 ## Verificação automática
 
