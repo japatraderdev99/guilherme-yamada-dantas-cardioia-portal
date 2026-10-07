@@ -1,0 +1,22 @@
+ffconcat version 1.0
+file 'quadros/01.png'
+duration 20
+file 'quadros/02.png'
+duration 17
+file 'quadros/03.png'
+duration 17
+file 'quadros/04.png'
+duration 19
+file 'quadros/05.png'
+duration 18
+file 'quadros/06.png'
+duration 17
+file 'quadros/07.png'
+duration 17
+file 'quadros/08.png'
+duration 18
+file 'quadros/09.png'
+duration 22
+file 'quadros/10.png'
+duration 20
+file 'quadros/10.png'

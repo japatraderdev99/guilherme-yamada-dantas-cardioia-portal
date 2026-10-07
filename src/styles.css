@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #f5f8fb;
+  color: #163e50;
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+h1 {
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  margin: 0 0 13px;
+  font-weight: 600;
+}
+h2 {
+  font-size: 21px;
+  margin: 0 0 20px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+p {
+  color: #597380;
+  line-height: 1.6;
+}
+a {
+  color: #176779;
+  text-underline-offset: 4px;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button {
+  border: 0;
+  background: #176779;
+  color: white;
+  cursor: pointer;
+  padding: 13px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+button:hover {
+  filter: brightness(0.94);
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+input,
+select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #b7cbd5;
+  background: white;
+  color: #163e50;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+input:focus,
+select:focus {
+  border-color: #168497;
+}
+:focus-visible {
+  outline: 3px solid #3299ba;
+  outline-offset: 3px;
+}
+form > button {
+  margin-top: 5px;
+}
+code {
+  font-size: 13px;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}

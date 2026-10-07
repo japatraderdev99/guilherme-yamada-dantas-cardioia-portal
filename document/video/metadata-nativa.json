@@ -1,0 +1,118 @@
+{
+  "arquivo": "CardioIA-Portal-demonstracao-nativa.mp4",
+  "duracao_segundos": 159.833333,
+  "sha256": "9313b9f6f0126ba8857190e0cfd464cc5c21749f727a839ad8a0edfffe2fe3cc",
+  "bytes": 2004106,
+  "resolucao": "1920x1080",
+  "fps": 24,
+  "codec": "h264",
+  "audio": false,
+  "fonte": "Gravação de Tela 2026-10-07 às 00.47.52.mov",
+  "fonte_sha256": "15cb2b230ee6bab6619011115629760547391af573df5676606d91b2e6238f93",
+  "fonte_preservada": true,
+  "edicao": "Margem preta esquerda removida; velocidade 2/3; legendas externas à interface; áudio ambiente removido; três complementos identificados. Pequeno corte inferior já presente na captura original.",
+  "timeline": [
+    {
+      "inicio": 0,
+      "fim": 12.0,
+      "titulo": "CardioIA | Portal React",
+      "legenda": "Guilherme Yamada Dantas · RM 568506. Painel com seis pacientes fictícios.\nGravação nativa do Mac, exibida a 2/3 da velocidade original.",
+      "fonte_inicio": 0,
+      "fonte_fim": 8,
+      "tipo": "gravacao_nativa"
+    },
+    {
+      "inicio": 12.0,
+      "fim": 21.0,
+      "titulo": "Busca de pacientes",
+      "legenda": "A busca por Ana filtra o cadastro local. Os pacientes vêm de um JSON fictício;\nuseEffect carrega os dados e useState controla a busca.",
+      "fonte_inicio": 8,
+      "fonte_fim": 14,
+      "tipo": "gravacao_nativa"
+    },
+    {
+      "inicio": 21.0,
+      "fim": 42.0,
+      "titulo": "Nova consulta",
+      "legenda": "Selecionamos Ana Ribeiro, Cardiologia, 09/10/2026 às 10h.\nO formulário usa useState; a agenda é controlada por useReducer.",
+      "fonte_inicio": 14,
+      "fonte_fim": 28,
+      "tipo": "gravacao_nativa"
+    },
+    {
+      "inicio": 42.0,
+      "fim": 49.5,
+      "titulo": "Agendamento confirmado",
+      "legenda": "A consulta aparece na agenda. Context API compartilha os dados\nentre as páginas; useEffect persiste as alterações no localStorage.",
+      "fonte_inicio": 28,
+      "fonte_fim": 33,
+      "tipo": "gravacao_nativa"
+    },
+    {
+      "inicio": 49.5,
+      "fim": 58.5,
+      "titulo": "Painel atualizado",
+      "legenda": "A contagem passa de zero para uma consulta futura.\nO mesmo atendimento aparece no painel geral.",
+      "fonte_inicio": 33,
+      "fonte_fim": 39,
+      "tipo": "gravacao_nativa"
+    },
+    {
+      "inicio": 58.5,
+      "fim": 66.0,
+      "titulo": "Persistência local",
+      "legenda": "A agenda mantém o atendimento após recarregar a página.\nOs dados permanecem neste navegador, sem servidor ou sincronização.",
+      "fonte_inicio": 39,
+      "fonte_fim": 44,
+      "tipo": "gravacao_nativa"
+    },
+    {
+      "inicio": 66.0,
+      "fim": 73.5,
+      "titulo": "Cancelamento com confirmação",
+      "legenda": "A consulta só é removida depois da confirmação.\nO estado compartilhado atualiza a agenda e o painel.",
+      "fonte_inicio": 44,
+      "fonte_fim": 49,
+      "tipo": "gravacao_nativa"
+    },
+    {
+      "inicio": 73.5,
+      "fim": 81.0,
+      "titulo": "Painel após cancelar",
+      "legenda": "O painel retorna a zero consultas futuras.\nCadastro, agendamento e cancelamento formam o fluxo demonstrado.",
+      "fonte_inicio": 49,
+      "fonte_fim": 54,
+      "tipo": "gravacao_nativa"
+    },
+    {
+      "inicio": 81.0,
+      "fim": 99.849,
+      "titulo": "Saída e acesso protegido",
+      "legenda": "Ao sair, o portal volta ao login. Rotas protegidas exigem sessão.\nJWT fictício: demonstração de interface, sem segurança de produção.",
+      "fonte_inicio": 54,
+      "fonte_fim": 66.566,
+      "tipo": "gravacao_nativa"
+    },
+    {
+      "inicio": 99.849,
+      "fim": 119.849,
+      "titulo": "Responsividade | capturas da revisão",
+      "legenda": "Complemento: capturas reais da revisão responsiva, fora da gravação contínua.\nNavegação móvel e formulário adaptados com CSS Modules.",
+      "tipo": "complemento_identificado"
+    },
+    {
+      "inicio": 119.849,
+      "fim": 142.849,
+      "titulo": "Estrutura e Hooks | comentário técnico",
+      "legenda": "Complemento técnico: arquivos e trechos do código entregue.\nAuthContext gerencia a sessão; DataContext centraliza pacientes e agenda.",
+      "tipo": "complemento_identificado"
+    },
+    {
+      "inicio": 142.849,
+      "fim": 159.849,
+      "titulo": "Validação e limites | comentário final",
+      "legenda": "Protótipo acadêmico com pacientes fictícios e autenticação simulada.\nNão realiza diagnóstico e não deve receber dados clínicos reais.",
+      "tipo": "complemento_identificado"
+    }
+  ]
+}

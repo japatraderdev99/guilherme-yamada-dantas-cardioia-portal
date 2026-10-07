@@ -1,0 +1,34 @@
+"""Edita gravação nativa preservada e acrescenta complementos identificados. Pillow + ffmpeg."""
+from pathlib import Path
+from PIL import Image,ImageDraw,ImageFont,ImageOps
+import subprocess,json,hashlib,textwrap
+ROOT=Path(__file__).resolve().parents[2]; OUT=ROOT/'document/video'; QA=ROOT/'.cache/video-nativa'; QA.mkdir(parents=True,exist_ok=True)
+import os
+SRC=Path(os.environ.get('CARDIOIA_VIDEO_ORIGINAL', 'CardioIA-Portal-Original.mov'))
+def f(n,b=False):return ImageFont.truetype('/System/Library/Fonts/Supplemental/Arial'+(' Bold' if b else '')+'.ttf',n)
+def run(a):subprocess.run(['ffmpeg','-v','error','-y']+a,check=True)
+scenes=[(0,8,'CardioIA | Portal React','Guilherme Yamada Dantas · RM 568506. Painel com seis pacientes fictícios.\nGravação nativa do Mac, exibida a 2/3 da velocidade original.'),(8,14,'Busca de pacientes','A busca por Ana filtra o cadastro local. Os pacientes vêm de um JSON fictício;\nuseEffect carrega os dados e useState controla a busca.'),(14,28,'Nova consulta','Selecionamos Ana Ribeiro, Cardiologia, 09/10/2026 às 10h.\nO formulário usa useState; a agenda é controlada por useReducer.'),(28,33,'Agendamento confirmado','A consulta aparece na agenda. Context API compartilha os dados\nentre as páginas; useEffect persiste as alterações no localStorage.'),(33,39,'Painel atualizado','A contagem passa de zero para uma consulta futura.\nO mesmo atendimento aparece no painel geral.'),(39,44,'Persistência local','A agenda mantém o atendimento após recarregar a página.\nOs dados permanecem neste navegador, sem servidor ou sincronização.'),(44,49,'Cancelamento com confirmação','A consulta só é removida depois da confirmação.\nO estado compartilhado atualiza a agenda e o painel.'),(49,54,'Painel após cancelar','O painel retorna a zero consultas futuras.\nCadastro, agendamento e cancelamento formam o fluxo demonstrado.'),(54,66.566,'Saída e acesso protegido','Ao sair, o portal volta ao login. Rotas protegidas exigem sessão.\nJWT fictício: demonstração de interface, sem segurança de produção.')]
+parts=[];timeline=[];clock=0
+for i,(start,end,title,cap) in enumerate(scenes):
+ im=Image.new('RGBA',(1920,1080),(12,37,48,255)); im.paste((0,0,0,0),(0,96,1920,950));d=ImageDraw.Draw(im);d.text((40,24),title,font=f(36,True),fill='white');d.multiline_text((40,974),cap,font=f(27),fill='white',spacing=9)
+ p=QA/f'legenda-{i:02}.png';im.save(p);out=QA/f'parte-{i:02}.mp4';duration=(end-start)*1.5
+ run(['-ss',str(start),'-t',str(end-start),'-i',str(SRC),'-loop','1','-i',str(p),'-filter_complex','[0:v]crop=1890:840:224:0,setpts=1.5*PTS,scale=1920:854,pad=1920:1080:0:96:color=0x0c2530[v];[v][1:v]overlay=0:0:shortest=1[out]','-map','[out]','-an','-t',str(duration),'-r','24','-c:v','libx264','-preset','fast','-crf','20','-pix_fmt','yuv420p',str(out)])
+ parts.append(out);timeline.append({'inicio':round(clock,3),'fim':round(clock+duration,3),'titulo':title,'legenda':cap,'fonte_inicio':start,'fonte_fim':end,'tipo':'gravacao_nativa'});clock+=duration
+cards=[('Responsividade | capturas da revisão', 'Complemento: capturas reais da revisão responsiva, fora da gravação contínua.\nNavegação móvel e formulário adaptados com CSS Modules.',20,'mobile'),('Estrutura e Hooks | comentário técnico','Complemento técnico: arquivos e trechos do código entregue.\nAuthContext gerencia a sessão; DataContext centraliza pacientes e agenda.',23,'code'),('Validação e limites | comentário final','Protótipo acadêmico com pacientes fictícios e autenticação simulada.\nNão realiza diagnóstico e não deve receber dados clínicos reais.',17,'end')]
+for i,(title,cap,duration,kind) in enumerate(cards,9):
+ im=Image.new('RGB',(1920,1080),'#0c2530');d=ImageDraw.Draw(im);d.text((50,30),title,font=f(39,True),fill='white')
+ if kind=='mobile':
+  for fn,x in [('mobile.png',350),('mobile-agenda.png',1050)]:
+   shot=Image.open(ROOT/'document/evidencias'/fn);shot.thumbnail((480,805));im.paste(shot,(x,125))
+ elif kind=='code':
+  lines=['src/contexts/AuthContext.jsx → sessão e useContext','src/components/ProtectedRoute.jsx → acesso com sessão','src/pages/ → painel, pacientes, agenda e login','src/services/ → dados locais, autenticação e validação','','DataContext.jsx (trecho):','const [appointments, dispatch] = useReducer(','  appointmentsReducer, undefined,','  () => validAppointments(read(APPOINTMENTS_KEY, [])),',');','useEffect(() => {','  setStorageError(!save(APPOINTMENTS_KEY, appointments));','}, [appointments]);']
+  d.multiline_text((70,155),'\n'.join(lines),font=f(32),fill='#d3f4ef',spacing=15)
+ else:
+  lines=['VALIDAÇÃO LOCAL','7 testes automatizados aprovados e build de produção aprovado.','','Cobertura: login, expiração, rotas protegidas, busca,','persistência, agendamento, conflitos e cancelamento.','','LIMITES','JWT sem assinatura criptográfica e senha pública de demonstração.','Dados locais no navegador; sem backend ou decisão clínica.','','Guilherme Yamada Dantas · RM 568506 · FIAP Fase 2']
+  d.multiline_text((70,155),'\n'.join(lines),font=f(34),fill='#d3f4ef',spacing=21)
+ d.multiline_text((40,974),cap,font=f(27),fill='white',spacing=9);p=QA/f'complemento-{i}.png';im.save(p);out=QA/f'parte-{i:02}.mp4';run(['-loop','1','-i',str(p),'-t',str(duration),'-r','24','-an','-c:v','libx264','-preset','fast','-crf','20','-pix_fmt','yuv420p',str(out)]);parts.append(out);timeline.append({'inicio':round(clock,3),'fim':round(clock+duration,3),'titulo':title,'legenda':cap,'tipo':'complemento_identificado'});clock+=duration
+concat=QA/'partes.ffconcat';concat.write_text('\n'.join("file '"+str(p)+"'" for p in parts));dest=OUT/'CardioIA-Portal-demonstracao-nativa.mp4';run(['-f','concat','-safe','0','-i',str(concat),'-c','copy','-movflags','+faststart',str(dest)])
+def stamp(t):
+ ms=round(t*1000);return f'{ms//3600000:02}:{ms//60000%60:02}:{ms//1000%60:02},{ms%1000:03}'
+(OUT/'CardioIA-Portal-demonstracao-nativa.srt').write_text('\n\n'.join(f'{i+1}\n{stamp(s["inicio"])} --> {stamp(s["fim"])}\n{s["legenda"]}' for i,s in enumerate(timeline))+'\n')
+probe=json.loads(subprocess.check_output(['ffprobe','-v','quiet','-show_format','-show_streams','-of','json',str(dest)]));meta={'arquivo':dest.name,'duracao_segundos':float(probe['format']['duration']),'sha256':hashlib.sha256(dest.read_bytes()).hexdigest(),'bytes':dest.stat().st_size,'resolucao':'1920x1080','fps':24,'codec':'h264','audio':False,'fonte':SRC.name,'fonte_sha256':hashlib.sha256(SRC.read_bytes()).hexdigest(),'fonte_preservada':True,'edicao':'Margem preta esquerda removida; velocidade 2/3; legendas externas à interface; áudio ambiente removido; três complementos identificados. Pequeno corte inferior já presente na captura original.','timeline':timeline};(OUT/'metadata-nativa.json').write_text(json.dumps(meta,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v for k,v in meta.items() if k!='timeline'},ensure_ascii=False))

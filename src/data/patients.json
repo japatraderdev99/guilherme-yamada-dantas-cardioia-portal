@@ -1,0 +1,44 @@
+[
+  {
+    "id": "P001",
+    "name": "Ana Ribeiro",
+    "age": 54,
+    "specialty": "Cardiologia",
+    "lastVisit": "2026-09-24"
+  },
+  {
+    "id": "P002",
+    "name": "Carlos Lima",
+    "age": 62,
+    "specialty": "Arritmologia",
+    "lastVisit": "2026-09-26"
+  },
+  {
+    "id": "P003",
+    "name": "Beatriz Santos",
+    "age": 38,
+    "specialty": "Cardiologia",
+    "lastVisit": "2026-09-29"
+  },
+  {
+    "id": "P004",
+    "name": "João Oliveira",
+    "age": 71,
+    "specialty": "Cardiologia",
+    "lastVisit": "2026-10-01"
+  },
+  {
+    "id": "P005",
+    "name": "Marina Costa",
+    "age": 46,
+    "specialty": "Arritmologia",
+    "lastVisit": "2026-10-02"
+  },
+  {
+    "id": "P006",
+    "name": "Pedro Almeida",
+    "age": 59,
+    "specialty": "Cardiologia",
+    "lastVisit": "2026-10-03"
+  }
+]

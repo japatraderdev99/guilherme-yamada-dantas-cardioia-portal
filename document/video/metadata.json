@@ -1,0 +1,78 @@
+{
+  "natureza": "Sequência de capturas reais; não gravação contínua",
+  "duracao_s": 185,
+  "resolucao": "1920x1080",
+  "audio": false,
+  "cenas": [
+    {
+      "quadro": "01.png",
+      "fonte": "login.png",
+      "titulo": "CardioIA · Portal de cuidado",
+      "legenda": "Guilherme Yamada Dantas · RM 568506. Ir Além 1: React + Vite. Demonstração composta de capturas reais; não é uma gravação contínua.",
+      "duracao_s": 20
+    },
+    {
+      "quadro": "02.png",
+      "fonte": "painel.png",
+      "titulo": "Acesso e painel geral",
+      "legenda": "O login de demonstração permite acessar as rotas protegidas. O painel inicia com seis pacientes fictícios e nenhuma consulta futura.",
+      "duracao_s": 17
+    },
+    {
+      "quadro": "03.png",
+      "fonte": "pacientes.png",
+      "titulo": "Pacientes simulados",
+      "legenda": "A listagem consome um arquivo JSON local por um serviço assíncrono. useEffect carrega os dados; useState controla a busca por nome.",
+      "duracao_s": 17
+    },
+    {
+      "quadro": "04.png",
+      "fonte": "formulario.png",
+      "titulo": "Agendamento de consulta",
+      "legenda": "Selecionamos Ana Ribeiro, Cardiologia, 09/10/2026 às 10h. useState controla os campos e a validação bloqueia datas passadas e conflitos.",
+      "duracao_s": 19
+    },
+    {
+      "quadro": "05.png",
+      "fonte": "agenda-persistida.png",
+      "titulo": "Persistência confirmada",
+      "legenda": "Consulta criada e preservada após recarregar a página. useReducer controla a agenda; useEffect salva cada alteração no localStorage.",
+      "duracao_s": 18
+    },
+    {
+      "quadro": "06.png",
+      "fonte": "painel-atualizado.png",
+      "titulo": "Métricas atualizadas",
+      "legenda": "O painel passa de zero para uma consulta futura e apresenta o atendimento criado. Context API compartilha os mesmos dados entre as páginas.",
+      "duracao_s": 17
+    },
+    {
+      "quadro": "07.png",
+      "fonte": "mobile.png",
+      "titulo": "Interface responsiva",
+      "legenda": "Navegação e formulário também foram conferidos em uma janela móvel. CSS Modules organiza os estilos; controles têm rótulos e foco visível.",
+      "duracao_s": 17
+    },
+    {
+      "quadro": "08.png",
+      "fonte": "confirmacao-cancelamento.png",
+      "titulo": "Cancelamento e proteção de rotas",
+      "legenda": "O cancelamento pede confirmação. No teste real, a consulta foi removida; após sair, a rota de pacientes redirecionou para o login.",
+      "duracao_s": 18
+    },
+    {
+      "quadro": "09.png",
+      "fonte": "trechos de código e validação",
+      "titulo": "Hooks e Context API",
+      "legenda": "Os trechos exibidos vêm do código entregue. AuthContext compartilha a sessão; DataContext centraliza estado e persistência da agenda.",
+      "duracao_s": 22
+    },
+    {
+      "quadro": "10.png",
+      "fonte": "trechos de código e validação",
+      "titulo": "Validação e limites",
+      "legenda": "Sete testes automatizados e build aprovados. Login é simulado, sem segurança real; pacientes são fictícios. O portal não realiza diagnóstico.",
+      "duracao_s": 20
+    }
+  ]
+}

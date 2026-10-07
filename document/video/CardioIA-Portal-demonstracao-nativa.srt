@@ -1,0 +1,59 @@
+1
+00:00:00,000 --> 00:00:12,000
+Guilherme Yamada Dantas · RM 568506. Painel com seis pacientes fictícios.
+Gravação nativa do Mac, exibida a 2/3 da velocidade original.
+
+2
+00:00:12,000 --> 00:00:21,000
+A busca por Ana filtra o cadastro local. Os pacientes vêm de um JSON fictício;
+useEffect carrega os dados e useState controla a busca.
+
+3
+00:00:21,000 --> 00:00:42,000
+Selecionamos Ana Ribeiro, Cardiologia, 09/10/2026 às 10h.
+O formulário usa useState; a agenda é controlada por useReducer.
+
+4
+00:00:42,000 --> 00:00:49,500
+A consulta aparece na agenda. Context API compartilha os dados
+entre as páginas; useEffect persiste as alterações no localStorage.
+
+5
+00:00:49,500 --> 00:00:58,500
+A contagem passa de zero para uma consulta futura.
+O mesmo atendimento aparece no painel geral.
+
+6
+00:00:58,500 --> 00:01:06,000
+A agenda mantém o atendimento após recarregar a página.
+Os dados permanecem neste navegador, sem servidor ou sincronização.
+
+7
+00:01:06,000 --> 00:01:13,500
+A consulta só é removida depois da confirmação.
+O estado compartilhado atualiza a agenda e o painel.
+
+8
+00:01:13,500 --> 00:01:21,000
+O painel retorna a zero consultas futuras.
+Cadastro, agendamento e cancelamento formam o fluxo demonstrado.
+
+9
+00:01:21,000 --> 00:01:39,849
+Ao sair, o portal volta ao login. Rotas protegidas exigem sessão.
+JWT fictício: demonstração de interface, sem segurança de produção.
+
+10
+00:01:39,849 --> 00:01:59,849
+Complemento: capturas reais da revisão responsiva, fora da gravação contínua.
+Navegação móvel e formulário adaptados com CSS Modules.
+
+11
+00:01:59,849 --> 00:02:22,849
+Complemento técnico: arquivos e trechos do código entregue.
+AuthContext gerencia a sessão; DataContext centraliza pacientes e agenda.
+
+12
+00:02:22,849 --> 00:02:39,849
+Protótipo acadêmico com pacientes fictícios e autenticação simulada.
+Não realiza diagnóstico e não deve receber dados clínicos reais.
